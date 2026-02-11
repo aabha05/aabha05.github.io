@@ -8,251 +8,204 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
 <style>
+:root {
+    --bg: linear-gradient(135deg, #f3e8ff, #e0c3fc, #ffd6e7);
+    --header: linear-gradient(90deg, #f8c8ff, #cda4ff);
+    --card: rgba(255,255,255,0.65);
+    --text: #333;
+    --heading: #7b4fa3;
+}
+
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #f3e8ff, #e0c3fc, #ffd6e7);
-    color: #333;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.4s;
+}
+
+/* Mode toggle */
+.mode-toggle {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 20;
+}
+
+.mode-toggle button {
+    margin-left: 5px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
 }
 
 /* Header */
 .header {
     width: 100%;
-    padding: 22px;
+    padding: 20px;
     text-align: center;
     font-family: 'Playfair Display', serif;
-    font-size: 34px;
-    background: linear-gradient(90deg, #f8c8ff, #cda4ff);
+    font-size: 30px;
+    background: var(--header);
     color: white;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
-/* Hero section */
-.hero {
+/* Engineer hero */
+.hero-engineer {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 80px;
-    min-height: 100vh;
-    padding: 60px 40px;
-    position: relative;
+    gap: 60px;
+    min-height: 90vh;
+    padding: 40px;
 }
 
-/* soft gradient glow behind text */
-.hero::before {
-    content: "";
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, #fff2a8, transparent 70%);
-    top: 20%;
-    right: 15%;
-    z-index: 0;
-    opacity: 0.6;
-}
-
-.hero img {
-    width: 300px;
-    border-radius: 25px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-    z-index: 1;
-    animation: fadeIn 1s ease;
-}
-
-.hero-text {
-    max-width: 500px;
-    z-index: 1;
-    animation: fadeIn 1.2s ease;
+.hero-engineer img {
+    width: 260px;
+    border-radius: 20px;
 }
 
 .hero-text h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 64px;
+    font-size: 52px;
     margin: 0;
-    color: #7b4fa3;
 }
 
 .hero-text p {
-    font-size: 20px;
-    margin: 20px 0;
+    margin: 15px 0;
 }
 
-/* Resume button with yellow accent */
+/* Dancer hero */
+.hero-dancer {
+    display: none;
+    position: relative;
+    height: 100vh;
+    background: url("dance.jpg") center/cover no-repeat;
+    color: white;
+}
+
+.hero-dancer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(80,0,0,0.8));
+}
+
+.dancer-text {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.dancer-text h1 {
+    font-size: 64px;
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+}
+
 .resume-btn {
     display: inline-block;
-    margin-top: 15px;
+    margin-top: 20px;
     padding: 12px 30px;
-    background: linear-gradient(135deg, #ffd6e7, #fff2a8);
-    color: #6a3ea1;
+    background: #ff3b3b;
+    color: white;
     border-radius: 30px;
     text-decoration: none;
-    font-weight: 600;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
 }
 
-/* Container */
+/* Sections */
 .container {
     width: 92%;
-    max-width: 1100px;
+    max-width: 1000px;
     margin: auto;
 }
 
-/* Glass sections */
 .section {
-    background: rgba(255,255,255,0.6);
-    backdrop-filter: blur(12px);
+    background: var(--card);
     border-radius: 20px;
-    padding: 40px;
-    margin: 40px 0;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-}
-
-h2 {
-    color: #7b4fa3;
-}
-
-/* Skills */
-.skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.skill {
-    background: white;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 14px;
-}
-
-/* Project cards */
-.projects {
-    display: grid;
-    gap: 20px;
-}
-
-.card {
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-}
-
-/* Contact */
-.contact a {
-    display: block;
-    margin: 6px 0;
-    color: #6a3ea1;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-/* Animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    padding: 30px;
+    margin: 30px 0;
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-    .hero {
+    .hero-engineer {
         flex-direction: column;
         text-align: center;
-    }
-
-    .hero img {
-        width: 220px;
-    }
-
-    .hero-text h1 {
-        font-size: 42px;
     }
 }
 </style>
 </head>
 
-<body>
+<body class="engineer">
+
+<div class="mode-toggle">
+    <button onclick="setMode('engineer')">Engineer</button>
+    <button onclick="setMode('dancer')">Dancer</button>
+</div>
 
 <div class="header">
     Aabha Rajpal Portfolio
 </div>
 
-<!-- Hero -->
-<div class="hero">
-    <img src="photo.jpg" alt="Profile Photo">
+<!-- Engineer Hero -->
+<div class="hero-engineer" id="engineerHero">
+    <img src="photo.jpg" alt="Profile">
     <div class="hero-text">
         <h1>Aabha Rajpal</h1>
-        <p>B.Tech Student | Tech & Event Enthusiast</p>
-        <a href="resume.pdf" class="resume-btn" download>Download Resume</a>
+        <p>B.Tech Student</p>
+        <a href="#" class="resume-btn">Download Resume</a>
+    </div>
+</div>
+
+<!-- Dancer Hero -->
+<div class="hero-dancer" id="dancerHero">
+    <div class="dancer-text">
+        <h1>Aabha Rajpal</hh1>
+        <p>Dancer</p>
+        <a href="#" class="resume-btn">View Portfolio</a>
     </div>
 </div>
 
 <div class="container">
 
-    <!-- About -->
     <div class="section">
-        <h2>About Me</h2>
-        <p>
-            Passionate B.Tech student involved in technical projects,
-            event management, and creative initiatives.
-        </p>
+        <h2>About</h2>
+        <p>Short introduction goes here.</p>
     </div>
 
-    <!-- Skills -->
     <div class="section">
         <h2>Skills</h2>
-        <div class="skills">
-            <div class="skill">C Programming</div>
-            <div class="skill">HTML</div>
-            <div class="skill">CSS</div>
-            <div class="skill">Data Structures</div>
-            <div class="skill">Problem Solving</div>
-        </div>
+        <p>Skills will go here.</p>
     </div>
 
-    <!-- Projects -->
     <div class="section">
-        <h2>Projects</h2>
-        <div class="projects">
-            <div class="card">
-                <strong>Hotel Management System</strong>
-                <p>Oracle APEX-based application for hotel operations.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Clubs -->
-    <div class="section">
-        <h2>College Clubs & Societies</h2>
-        <ul>
-            <li>Technical Club – Core Member</li>
-            <li>Cultural Society – Event Team</li>
-        </ul>
-    </div>
-
-    <!-- Events -->
-    <div class="section">
-        <h2>Events & Leadership</h2>
-        <ul>
-            <li>Organized MotoGP-themed Datathon “Burnout”</li>
-            <li>Hosted Instagram Live session with industry guest</li>
-        </ul>
-    </div>
-
-    <!-- Contact -->
-    <div class="section contact">
-        <h2>Contact Me</h2>
-        <a href="mailto:your@email.com">your@email.com</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">GitHub</a>
+        <h2>Contact</h2>
+        <p>Email and links will go here.</p>
     </div>
 
 </div>
+
+<script>
+function setMode(mode) {
+    if (mode === "engineer") {
+        document.body.style.background = "linear-gradient(135deg, #f3e8ff, #e0c3fc, #ffd6e7)";
+        document.getElementById("engineerHero").style.display = "flex";
+        document.getElementById("dancerHero").style.display = "none";
+    } else {
+        document.body.style.background = "#000";
+        document.getElementById("engineerHero").style.display = "none";
+        document.getElementById("dancerHero").style.display = "block";
+    }
+}
+</script>
 
 </body>
 </html>
