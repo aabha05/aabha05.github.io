@@ -12,29 +12,9 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    transition: 0.4s;
     background: linear-gradient(135deg, #f3e8ff, #e0c3fc, #ffd6e7);
+    transition: background 0.4s;
 }
-
-/* LOADER */
-#loader {
-    position: fixed;
-    inset: 0;
-    background: linear-gradient(135deg, #f3e8ff, #e0c3fc, #ffd6e7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 99999;
-}
-.loader-circle {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 6px solid rgba(255,255,255,0.4);
-    border-top: 6px solid white;
-    animation: spin 1s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
 
 /* NAVBAR */
 .navbar {
@@ -47,10 +27,12 @@ body {
     padding: 14px 40px;
     transition: 0.4s;
 }
+
 .navbar.engineer {
     background: linear-gradient(90deg, #cda4ff, #f8c8ff);
     color: white;
 }
+
 .navbar.dancer {
     background: #f4efe8;
     color: #8a2d2d;
@@ -64,6 +46,7 @@ body {
     display: flex;
     gap: 5px;
 }
+
 .toggle button {
     border: none;
     padding: 8px 18px;
@@ -72,6 +55,7 @@ body {
     color: inherit;
     cursor: pointer;
 }
+
 .toggle button.active {
     background: white;
     color: #7b4fa3;
@@ -86,16 +70,19 @@ body {
     min-height: 90vh;
     padding: 40px;
 }
+
 .hero img,
 .dancer-right img {
     width: 260px;
     border-radius: 20px;
     transition: 0.4s;
 }
+
 .hero img:hover,
 .dancer-right img:hover {
     transform: scale(1.05);
 }
+
 .hero h2 {
     font-family: 'Playfair Display', serif;
     font-size: 52px;
@@ -104,7 +91,7 @@ body {
 /* BUTTON */
 .btn-glass {
     display: inline-block;
-    margin: 10px 10px 0 0;
+    margin-top: 15px;
     padding: 12px 28px;
     border-radius: 30px;
     border: 1px solid white;
@@ -113,66 +100,43 @@ body {
     text-decoration: none;
     transition: 0.3s;
 }
+
 .btn-glass:hover {
     background: white;
     color: #7b4fa3;
 }
 
-/* SECTION */
-.container {
-    width: 90%;
-    max-width: 900px;
-    margin: auto;
-}
-.section {
-    background: rgba(255,255,255,0.65);
-    padding: 30px;
-    border-radius: 20px;
-    margin: 40px 0;
-    backdrop-filter: blur(10px);
-    transition: 0.3s;
+/* PANELS */
+.panel {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(80px);
     opacity: 0;
-    transform: translateY(40px);
+    transition: all 0.8s ease;
 }
-.section.visible {
-    opacity: 1;
+.panel.visible {
     transform: translateY(0);
+    opacity: 1;
 }
 
-/* SEPARATOR */
-.separator {
-    width: 60%;
-    height: 3px;
-    margin: 40px auto;
-    background: linear-gradient(90deg, transparent, #cda4ff, transparent);
-    animation: glow 3s infinite;
-}
-@keyframes glow {
-    0% { opacity: 0.3; }
-    50% { opacity: 1; }
-    100% { opacity: 0.3; }
-}
-
-/* SKILL BARS */
-.skill { margin: 15px 0; }
-.skill-bar {
-    background: #eee;
+.section {
+    background: rgba(255,255,255,0.7);
+    padding: 40px;
     border-radius: 20px;
-    overflow: hidden;
-}
-.skill-fill {
-    height: 10px;
-    width: 0;
-    background: linear-gradient(90deg, #cda4ff, #f8c8ff);
-    transition: width 1.5s ease;
+    max-width: 800px;
+    width: 90%;
+    text-align: center;
 }
 
 /* CONTACT ICONS */
 .contact-icons {
-    font-size: 22px;
+    font-size: 24px;
     display: flex;
-    gap: 20px;
-    margin-top: 15px;
+    gap: 25px;
+    justify-content: center;
+    margin-top: 20px;
 }
 .contact-icons a {
     color: inherit;
@@ -188,21 +152,6 @@ body {
     background: #f4efe8;
     color: #8a2d2d;
     position: relative;
-    overflow: hidden;
-}
-.dancer-mode::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background-image: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
-    background-size: 4px 4px;
-    opacity: 0.6;
-    z-index: 0;
-}
-.dancer-mode > * {
-    position: relative;
-    z-index: 1;
 }
 
 .dancer-hero {
@@ -222,27 +171,8 @@ body {
 }
 .dancer-right img {
     width: 100%;
-    height: 100vh;
+    height: 110vh;
     object-fit: cover;
-}
-
-/* CUSTOM CURSOR */
-#cursor-dot,
-#cursor-outline {
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    border-radius: 50%;
-}
-#cursor-dot {
-    width: 6px;
-    height: 6px;
-    background: #cda4ff;
-}
-#cursor-outline {
-    width: 30px;
-    height: 30px;
-    border: 2px solid #cda4ff;
 }
 
 /* BACK TO TOP */
@@ -258,21 +188,10 @@ body {
     cursor: pointer;
     display: none;
 }
-
-/* MOBILE */
-@media (max-width: 768px) {
-    .hero,
-    .dancer-hero {
-        flex-direction: column;
-        text-align: center;
-    }
-}
 </style>
 </head>
 
 <body>
-
-<div id="loader"><div class="loader-circle"></div></div>
 
 <div id="navbar" class="navbar engineer">
     <h1>Aabha Rajpal</h1>
@@ -293,25 +212,7 @@ body {
         </div>
     </div>
 
-    <div class="separator"></div>
-
-    <div class="container">
-        <div class="section" id="skills">
-            <h3>Skills</h3>
-            <div class="skill">
-                <div>C Programming</div>
-                <div class="skill-bar">
-                    <div class="skill-fill" data-skill="80%"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div>HTML & CSS</div>
-                <div class="skill-bar">
-                    <div class="skill-fill" data-skill="75%"></div>
-                </div>
-            </div>
-        </div>
-
+    <div class="panel">
         <div class="section">
             <h3>Contact</h3>
             <div class="contact-icons">
@@ -336,7 +237,7 @@ body {
         </div>
     </div>
 
-    <div class="container">
+    <div class="panel">
         <div class="section">
             <h3>Contact</h3>
             <div class="contact-icons">
@@ -348,38 +249,29 @@ body {
     </div>
 </div>
 
-<div id="cursor-dot"></div>
-<div id="cursor-outline"></div>
 <button id="backToTop">↑</button>
 
 <script>
-window.onload = () => {
-    document.getElementById("loader").style.display = "none";
-};
-
-/* MODE SWITCH */
 function setMode(mode) {
+    const navbar = document.getElementById("navbar");
+
     document.getElementById("engineer").style.display =
         mode === "engineer" ? "block" : "none";
     document.getElementById("dancer").style.display =
         mode === "dancer" ? "block" : "none";
+
+    document.getElementById("engBtn").classList.toggle("active", mode==="engineer");
+    document.getElementById("danceBtn").classList.toggle("active", mode==="dancer");
+
+    if (mode === "engineer") {
+        navbar.className = "navbar engineer";
+        document.body.style.background =
+            "linear-gradient(135deg, #f3e8ff, #e0c3fc, #ffd6e7)";
+    } else {
+        navbar.className = "navbar dancer";
+        document.body.style.background = "#f4efe8";
+    }
 }
-
-/* SCROLL REVEAL + SKILL ANIMATION */
-const sections = document.querySelectorAll(".section");
-window.addEventListener("scroll", () => {
-    sections.forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 80) {
-            sec.classList.add("visible");
-
-            const bars = sec.querySelectorAll(".skill-fill");
-            bars.forEach(bar => {
-                bar.style.width = bar.dataset.skill;
-            });
-        }
-    });
-});
 
 /* BACK TO TOP */
 const backBtn = document.getElementById("backToTop");
@@ -387,16 +279,6 @@ window.addEventListener("scroll", () => {
     backBtn.style.display = window.scrollY > 300 ? "block" : "none";
 });
 backBtn.onclick = () => window.scrollTo({top:0,behavior:"smooth"});
-
-/* CUSTOM CURSOR */
-const dot = document.getElementById("cursor-dot");
-const outline = document.getElementById("cursor-outline");
-document.addEventListener("mousemove", e => {
-    dot.style.left = e.clientX + "px";
-    dot.style.top = e.clientY + "px";
-    outline.style.left = e.clientX + "px";
-    outline.style.top = e.clientY + "px";
-});
 </script>
 
 </body>
