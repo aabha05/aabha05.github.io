@@ -8,19 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
 <style>
-:root {
-    --bg: linear-gradient(135deg, #f3e8ff, #e0c3fc, #ffd6e7);
-    --header: linear-gradient(90deg, #f8c8ff, #cda4ff);
-    --card: rgba(255,255,255,0.65);
-    --text: #333;
-    --heading: #7b4fa3;
-}
-
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: var(--bg);
-    color: var(--text);
     transition: 0.4s;
 }
 
@@ -48,11 +38,11 @@ body {
     text-align: center;
     font-family: 'Playfair Display', serif;
     font-size: 30px;
-    background: var(--header);
     color: white;
+    background: linear-gradient(90deg, #f8c8ff, #cda4ff);
 }
 
-/* Engineer hero */
+/* ---------------- ENGINEER MODE ---------------- */
 .hero-engineer {
     display: flex;
     align-items: center;
@@ -60,6 +50,7 @@ body {
     gap: 60px;
     min-height: 90vh;
     padding: 40px;
+    background: linear-gradient(135deg, #f3e8ff, #e0c3fc, #ffd6e7);
 }
 
 .hero-engineer img {
@@ -77,47 +68,76 @@ body {
     margin: 15px 0;
 }
 
-/* Dancer hero */
-.hero-dancer {
-    display: none;
-    position: relative;
-    height: 100vh;
-    background: url("dance.jpg") center/cover no-repeat;
-    color: white;
-}
-
-.hero-dancer::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(80,0,0,0.8));
-}
-
-.dancer-text {
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.dancer-text h1 {
-    font-size: 64px;
-    margin: 0;
-    font-family: 'Playfair Display', serif;
-}
-
 .resume-btn {
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 15px;
     padding: 12px 30px;
-    background: #ff3b3b;
-    color: white;
+    background: linear-gradient(135deg, #ffd6e7, #fff2a8);
+    color: #333;
     border-radius: 30px;
     text-decoration: none;
+    font-weight: 600;
+}
+
+/* ---------------- DANCER MODE ---------------- */
+.hero-dancer {
+    display: none;
+    min-height: 100vh;
+    background: #f4efe8;
+}
+
+.dancer-split {
+    display: flex;
+    min-height: 100vh;
+}
+
+.dancer-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px;
+    font-family: 'Playfair Display', serif;
+    color: #8a2d2d;
+}
+
+.dancer-left h1 {
+    font-size: 60px;
+    margin: 0;
+}
+
+.dancer-left h2 {
+    font-size: 28px;
+    margin: 15px 0;
+    letter-spacing: 3px;
+}
+
+.dancer-left p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.dancer-right {
+    flex: 1;
+}
+
+.dancer-right img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+/* Single photo section */
+.dancer-photo {
+    display: none;
+    width: 100%;
+    background: #f4efe8;
+}
+
+.dancer-photo img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
 }
 
 /* Sections */
@@ -128,7 +148,7 @@ body {
 }
 
 .section {
-    background: var(--card);
+    background: rgba(255,255,255,0.7);
     border-radius: 20px;
     padding: 30px;
     margin: 30px 0;
@@ -140,11 +160,19 @@ body {
         flex-direction: column;
         text-align: center;
     }
+
+    .dancer-split {
+        flex-direction: column;
+    }
+
+    .dancer-right img {
+        height: auto;
+    }
 }
 </style>
 </head>
 
-<body class="engineer">
+<body>
 
 <div class="mode-toggle">
     <button onclick="setMode('engineer')">Engineer</button>
@@ -155,54 +183,61 @@ body {
     Aabha Rajpal Portfolio
 </div>
 
-<!-- Engineer Hero -->
+<!-- ENGINEER HERO -->
 <div class="hero-engineer" id="engineerHero">
     <img src="photo.jpg" alt="Profile">
     <div class="hero-text">
         <h1>Aabha Rajpal</h1>
         <p>B.Tech Student</p>
-        <a href="#" class="resume-btn">Download Resume</a>
+        <a href="Resume.pdf" class="resume-btn" download>Download Resume</a>
     </div>
 </div>
 
-<!-- Dancer Hero -->
+<!-- DANCER HERO -->
 <div class="hero-dancer" id="dancerHero">
-    <div class="dancer-text">
-        <h1>Aabha Rajpal</hh1>
-        <p>Dancer</p>
-        <a href="#" class="resume-btn">View Portfolio</a>
+    <div class="dancer-split">
+        <div class="dancer-left">
+            <h1>Aabha Rajpal</h1>
+            <h2>DANCER</h2>
+            <p>Performer & Choreographer</p>
+        </div>
+
+        <div class="dancer-right">
+            <img src="dancer.jpg" alt="Dance Photo">
+        </div>
     </div>
 </div>
 
-<div class="container">
+<!-- SINGLE PHOTO SECTION -->
+<div class="dancer-photo" id="dancerPhoto">
+    <img src="dancer.jpg" alt="Dance">
+</div>
 
+<!-- BASIC CONTENT -->
+<div class="container">
     <div class="section">
         <h2>About</h2>
-        <p>Short introduction goes here.</p>
-    </div>
-
-    <div class="section">
-        <h2>Skills</h2>
-        <p>Skills will go here.</p>
+        <p>Your introduction will go here.</p>
     </div>
 
     <div class="section">
         <h2>Contact</h2>
-        <p>Email and links will go here.</p>
+        <p>Your contact details will go here.</p>
     </div>
-
 </div>
 
 <script>
 function setMode(mode) {
     if (mode === "engineer") {
-        document.body.style.background = "linear-gradient(135deg, #f3e8ff, #e0c3fc, #ffd6e7)";
         document.getElementById("engineerHero").style.display = "flex";
         document.getElementById("dancerHero").style.display = "none";
+        document.getElementById("dancerPhoto").style.display = "none";
+        document.body.style.background = "#ffffff";
     } else {
-        document.body.style.background = "#000";
         document.getElementById("engineerHero").style.display = "none";
         document.getElementById("dancerHero").style.display = "block";
+        document.getElementById("dancerPhoto").style.display = "block";
+        document.body.style.background = "#f4efe8";
     }
 }
 </script>
