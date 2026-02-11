@@ -11,32 +11,95 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #f7d9ff, #e0c3fc, #ffd6e7);
+    background: linear-gradient(135deg, #f3e8ff, #e0c3fc, #ffd6e7);
     color: #333;
 }
 
-/* Header bar */
+/* Header */
 .header {
     width: 100%;
     padding: 22px;
     text-align: center;
     font-family: 'Playfair Display', serif;
     font-size: 34px;
-    background: linear-gradient(90deg, #d7a6ff, #ffb3e6);
+    background: linear-gradient(90deg, #f8c8ff, #cda4ff);
     color: white;
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+/* Hero section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    min-height: 100vh;
+    padding: 60px 40px;
+    position: relative;
+}
+
+/* soft gradient glow behind text */
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, #fff2a8, transparent 70%);
+    top: 20%;
+    right: 15%;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+.hero img {
+    width: 300px;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    z-index: 1;
+    animation: fadeIn 1s ease;
+}
+
+.hero-text {
+    max-width: 500px;
+    z-index: 1;
+    animation: fadeIn 1.2s ease;
+}
+
+.hero-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    margin: 0;
+    color: #7b4fa3;
+}
+
+.hero-text p {
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+/* Resume button with yellow accent */
+.resume-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #ffd6e7, #fff2a8);
+    color: #6a3ea1;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
 }
 
 /* Container */
 .container {
     width: 92%;
-    max-width: 1200px;
+    max-width: 1100px;
     margin: auto;
 }
 
 /* Glass sections */
 .section {
-    background: rgba(255,255,255,0.55);
+    background: rgba(255,255,255,0.6);
     backdrop-filter: blur(12px);
     border-radius: 20px;
     padding: 40px;
@@ -44,32 +107,8 @@ body {
     box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
-h1, h2 {
+h2 {
     color: #7b4fa3;
-}
-
-/* Hero */
-.hero {
-    text-align: center;
-}
-
-.hero img {
-    width: 140px;
-    border-radius: 50%;
-    padding: 4px;
-    background: linear-gradient(135deg, #ffb3e6, #cda4ff);
-    margin-bottom: 15px;
-}
-
-.resume-btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 12px 28px;
-    background: linear-gradient(135deg, #ffb3e6, #cda4ff);
-    color: white;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 500;
 }
 
 /* Skills */
@@ -107,10 +146,31 @@ h1, h2 {
     font-weight: 500;
 }
 
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Mobile */
-@media (max-width: 600px) {
-    .section {
-        padding: 25px;
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero img {
+        width: 220px;
+    }
+
+    .hero-text h1 {
+        font-size: 42px;
     }
 }
 </style>
@@ -122,15 +182,17 @@ h1, h2 {
     Aabha Rajpal Portfolio
 </div>
 
-<div class="container">
-
-    <!-- Hero -->
-    <div class="section hero">
-        <img src="photo.jpg" alt="Profile">
+<!-- Hero -->
+<div class="hero">
+    <img src="photo.jpg" alt="Profile Photo">
+    <div class="hero-text">
         <h1>Aabha Rajpal</h1>
         <p>B.Tech Student | Tech & Event Enthusiast</p>
         <a href="resume.pdf" class="resume-btn" download>Download Resume</a>
     </div>
+</div>
+
+<div class="container">
 
     <!-- About -->
     <div class="section">
