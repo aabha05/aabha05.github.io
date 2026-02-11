@@ -11,61 +11,49 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    transition: 0.4s;
-    background: linear-gradient(135deg, #f3e8ff, #e0c3fc, #ffd6e7);
-}
-
-/* ===== NAVBAR OPTION 3 ===== */
-.navbar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 40px;
-    background: linear-gradient(90deg, #cda4ff, #f8c8ff);
-    color: white;
 }
 
-.navbar h1 {
-    margin: 0;
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    background: linear-gradient(180deg, #cda4ff, #f8c8ff);
+    color: white;
+    min-height: 100vh;
+    padding: 30px 20px;
+    position: fixed;
+}
+
+.sidebar h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 28px;
+    font-size: 26px;
 }
 
-/* Toggle */
-.toggle {
-    background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(10px);
-    padding: 6px;
-    border-radius: 30px;
-    display: flex;
-    gap: 5px;
-}
-
-.toggle button {
-    border: none;
-    padding: 8px 18px;
-    border-radius: 20px;
+.sidebar button {
+    display: block;
+    margin: 15px 0;
     background: transparent;
+    border: none;
     color: white;
+    font-size: 16px;
     cursor: pointer;
 }
 
-.toggle button.active {
-    background: white;
-    color: #7b4fa3;
+/* Main */
+.main {
+    margin-left: 240px;
+    padding: 40px;
+    width: 100%;
+    background: linear-gradient(135deg, #f3e8ff, #ffd6e7);
+    min-height: 100vh;
 }
 
-/* ===== HERO ===== */
+/* Hero */
 .hero {
     display: flex;
+    gap: 50px;
     align-items: center;
-    justify-content: center;
-    gap: 60px;
-    min-height: 90vh;
-    padding: 40px;
+    min-height: 80vh;
 }
 
 .hero img {
@@ -76,143 +64,75 @@ body {
 .hero h2 {
     font-family: 'Playfair Display', serif;
     font-size: 52px;
-    margin: 0;
 }
 
-/* Glass button */
-.btn-glass {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 28px;
+/* Gradient button */
+.btn {
+    padding: 12px 30px;
     border-radius: 30px;
-    border: 1px solid white;
-    background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(10px);
-    color: white;
+    background: linear-gradient(135deg, #ffd6e7, #fff2a8);
     text-decoration: none;
-    transition: 0.3s;
-}
-
-.btn-glass:hover {
-    background: white;
-    color: #7b4fa3;
+    color: #333;
+    font-weight: bold;
 }
 
 /* Sections */
-.container {
-    width: 90%;
-    max-width: 900px;
-    margin: auto;
-}
-
 .section {
-    background: rgba(255,255,255,0.6);
+    background: white;
     padding: 30px;
     border-radius: 20px;
     margin: 30px 0;
-    backdrop-filter: blur(10px);
     transition: 0.3s;
 }
 
 .section:hover {
     transform: translateY(-5px);
 }
-
-/* Dancer */
-.dancer-mode {
-    display: none;
-    background: #f4efe8;
-    color: #8a2d2d;
-}
-
-.dancer-hero {
-    display: flex;
-    min-height: 100vh;
-}
-
-.dancer-left {
-    flex: 1;
-    padding: 80px;
-    font-family: 'Playfair Display', serif;
-}
-
-.dancer-left h2 {
-    font-size: 60px;
-}
-
-.dancer-right {
-    flex: 2;
-}
-
-.dancer-right img {
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-}
-
-/* Expand sections */
-.content {
-    display: none;
-    margin-top: 15px;
-}
 </style>
 </head>
 
 <body>
 
-<div class="navbar">
-    <h1>Aabha Rajpal</h1>
-    <div class="toggle">
-        <button id="engBtn" class="active" onclick="setMode('engineer')">Engineer</button>
-        <button id="danceBtn" onclick="setMode('dancer')">Dancer</button>
-    </div>
+<div class="sidebar">
+    <h1>Aabha Rajpal</hh1>
+    <button onclick="setMode('engineer')">Engineer</button>
+    <button onclick="setMode('dancer')">Dancer</button>
 </div>
 
-<!-- ENGINEER -->
-<div id="engineer">
-    <div class="hero">
-        <img src="photo.jpg">
-        <div>
-            <h2>Aabha Rajpal</h2>
-            <p>B.Tech Student</p>
-            <a href="Resume.pdf" class="btn-glass">Download Resume</a>
+<div class="main">
+
+    <!-- Engineer -->
+    <div id="engineer">
+        <div class="hero">
+            <img src="photo.jpg">
+            <div>
+                <h2>Aabha Rajpal</h2>
+                <p>B.Tech Student</p>
+                <a href="Resume.pdf" class="btn">Download Resume</a>
+            </div>
         </div>
+
+        <div class="section">About</div>
+        <div class="section">Skills</div>
+        <div class="section">Projects</div>
     </div>
 
-    <div class="container">
-        <div class="section">About section</div>
-        <div class="section">Skills section</div>
-        <div class="section">Projects section</div>
-        <div class="section">Contact section</div>
-    </div>
-</div>
-
-<!-- DANCER -->
-<div id="dancer" class="dancer-mode">
-    <div class="dancer-hero">
-        <div class="dancer-left">
-            <h2>Aabha Rajpal</h2>
-            <p>Dancer</p>
-            <p><i>I believe in moving and improving every day.</i></p>
-        </div>
-        <div class="dancer-right">
+    <!-- Dancer -->
+    <div id="dancer" style="display:none;">
+        <div class="hero">
             <img src="dancer.jpg">
+            <div>
+                <h2>Dancer</h2>
+                <p>I believe in moving and improving every day.</p>
+            </div>
         </div>
+
+        <div class="section">Aabha as a Dancer</div>
+        <div class="section">Past Training</div>
+        <div class="section">Dance Styles</div>
+        <div class="section">Contact</div>
     </div>
 
-    <div class="container">
-        <div class="section">
-            <h3 onclick="toggle('bio')">Aabha as a Dancer</h3>
-            <div id="bio" class="content">Your dancer bio.</div>
-        </div>
-
-        <div class="section">
-            <h3 onclick="toggle('training')">Past Training</h3>
-            <div id="training" class="content">Training details.</div>
-        </div>
-
-        <div class="section">Contact: email / phone / Instagram</div>
-    </div>
 </div>
 
 <script>
@@ -221,14 +141,6 @@ function setMode(mode) {
         mode === "engineer" ? "block" : "none";
     document.getElementById("dancer").style.display =
         mode === "dancer" ? "block" : "none";
-
-    document.getElementById("engBtn").classList.toggle("active", mode==="engineer");
-    document.getElementById("danceBtn").classList.toggle("active", mode==="dancer");
-}
-
-function toggle(id) {
-    const el = document.getElementById(id);
-    el.style.display = el.style.display === "block" ? "none" : "block";
 }
 </script>
 
