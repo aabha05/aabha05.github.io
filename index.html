@@ -12,8 +12,8 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
+    transition: 0.4s;
     background: linear-gradient(135deg, #f3e8ff, #e0c3fc, #ffd6e7);
-    overflow-x: hidden;
 }
 
 /* LOADER */
@@ -45,6 +45,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 14px 40px;
+    transition: 0.4s;
 }
 .navbar.engineer {
     background: linear-gradient(90deg, #cda4ff, #f8c8ff);
@@ -56,7 +57,6 @@ body {
     border-bottom: 1px solid #e0d6c8;
 }
 
-/* TOGGLE */
 .toggle {
     background: rgba(255,255,255,0.2);
     padding: 6px;
@@ -104,7 +104,7 @@ body {
 /* BUTTON */
 .btn-glass {
     display: inline-block;
-    margin-top: 15px;
+    margin: 10px 10px 0 0;
     padding: 12px 28px;
     border-radius: 30px;
     border: 1px solid white;
@@ -118,29 +118,25 @@ body {
     color: #7b4fa3;
 }
 
-/* SLIDING PANELS */
-.panel {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: translateY(80px);
-    opacity: 0;
-    transition: all 0.8s ease;
-}
-.panel.visible {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-/* SECTION BOX */
-.section {
-    background: rgba(255,255,255,0.7);
-    padding: 40px;
-    border-radius: 20px;
-    max-width: 800px;
+/* SECTION */
+.container {
     width: 90%;
-    text-align: center;
+    max-width: 900px;
+    margin: auto;
+}
+.section {
+    background: rgba(255,255,255,0.65);
+    padding: 30px;
+    border-radius: 20px;
+    margin: 40px 0;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+    opacity: 0;
+    transform: translateY(40px);
+}
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* SEPARATOR */
@@ -157,8 +153,8 @@ body {
     100% { opacity: 0.3; }
 }
 
-/* SKILLS */
-.skill { margin: 20px 0; }
+/* SKILL BARS */
+.skill { margin: 15px 0; }
 .skill-bar {
     background: #eee;
     border-radius: 20px;
@@ -173,11 +169,10 @@ body {
 
 /* CONTACT ICONS */
 .contact-icons {
-    font-size: 24px;
+    font-size: 22px;
     display: flex;
-    gap: 25px;
-    justify-content: center;
-    margin-top: 20px;
+    gap: 20px;
+    margin-top: 15px;
 }
 .contact-icons a {
     color: inherit;
@@ -195,8 +190,6 @@ body {
     position: relative;
     overflow: hidden;
 }
-
-/* Paper texture */
 .dancer-mode::before {
     content: "";
     position: fixed;
@@ -212,7 +205,6 @@ body {
     z-index: 1;
 }
 
-/* PARALLAX HERO */
 .dancer-hero {
     display: flex;
     min-height: 100vh;
@@ -227,17 +219,14 @@ body {
 }
 .dancer-right {
     flex: 2;
-    overflow: hidden;
 }
 .dancer-right img {
     width: 100%;
-    height: 110vh;
+    height: 100vh;
     object-fit: cover;
-    transform: translateY(0);
-    transition: transform 0.1s linear;
 }
 
-/* CURSOR */
+/* CUSTOM CURSOR */
 #cursor-dot,
 #cursor-outline {
     position: fixed;
@@ -269,6 +258,15 @@ body {
     cursor: pointer;
     display: none;
 }
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .hero,
+    .dancer-hero {
+        flex-direction: column;
+        text-align: center;
+    }
+}
 </style>
 </head>
 
@@ -295,8 +293,10 @@ body {
         </div>
     </div>
 
-    <div class="panel">
-        <div class="section">
+    <div class="separator"></div>
+
+    <div class="container">
+        <div class="section" id="skills">
             <h3>Skills</h3>
             <div class="skill">
                 <div>C Programming</div>
@@ -311,9 +311,7 @@ body {
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="panel">
         <div class="section">
             <h3>Contact</h3>
             <div class="contact-icons">
@@ -334,11 +332,11 @@ body {
             <p><i>I believe in moving and improving every day.</i></p>
         </div>
         <div class="dancer-right">
-            <img src="dancer.jpg" id="parallaxImg">
+            <img src="dancer.jpg">
         </div>
     </div>
 
-    <div class="panel">
+    <div class="container">
         <div class="section">
             <h3>Contact</h3>
             <div class="contact-icons">
@@ -367,28 +365,20 @@ function setMode(mode) {
         mode === "dancer" ? "block" : "none";
 }
 
-/* SLIDING PANELS */
-const panels = document.querySelectorAll(".panel");
+/* SCROLL REVEAL + SKILL ANIMATION */
+const sections = document.querySelectorAll(".section");
 window.addEventListener("scroll", () => {
-    panels.forEach(panel => {
-        const rect = panel.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-            panel.classList.add("visible");
+    sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+            sec.classList.add("visible");
 
-            const bars = panel.querySelectorAll(".skill-fill");
+            const bars = sec.querySelectorAll(".skill-fill");
             bars.forEach(bar => {
                 bar.style.width = bar.dataset.skill;
             });
         }
     });
-});
-
-/* PARALLAX */
-window.addEventListener("scroll", () => {
-    const img = document.getElementById("parallaxImg");
-    if (img) {
-        img.style.transform = `translateY(${window.scrollY * 0.15}px)`;
-    }
 });
 
 /* BACK TO TOP */
