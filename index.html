@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aabha Rajpal Portfolio</title>
+<title>Aabha Rajpal</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 
@@ -12,82 +12,120 @@ body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     transition: 0.4s;
+    background: linear-gradient(135deg, #f3e8ff, #e0c3fc, #ffd6e7);
 }
 
-/* ================= HEADER ================= */
-.header {
-    padding: 18px;
-    text-align: center;
+/* ===== NAVBAR OPTION 3 ===== */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 40px;
+    background: linear-gradient(90deg, #cda4ff, #f8c8ff);
+    color: white;
+}
+
+.navbar h1 {
+    margin: 0;
     font-family: 'Playfair Display', serif;
     font-size: 28px;
 }
 
-/* Engineer header */
-.header.engineer {
-    background: linear-gradient(90deg, #f8c8ff, #cda4ff);
+/* Toggle */
+.toggle {
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    padding: 6px;
+    border-radius: 30px;
+    display: flex;
+    gap: 5px;
+}
+
+.toggle button {
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    background: transparent;
     color: white;
+    cursor: pointer;
 }
 
-/* Dancer header */
-.header.dancer {
-    background: #f4efe8;
-    color: #8a2d2d;
-}
-
-/* ================= NAV ================= */
-.nav {
-    text-align: center;
-    padding: 10px;
-}
-
-.nav a {
-    margin: 0 10px;
-    text-decoration: none;
+.toggle button.active {
+    background: white;
     color: #7b4fa3;
-    font-weight: 500;
 }
 
-/* ================= ENGINEER HERO ================= */
-.hero-engineer {
+/* ===== HERO ===== */
+.hero {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 60px;
     min-height: 90vh;
     padding: 40px;
-    background: linear-gradient(135deg, #f3e8ff, #e0c3fc, #ffd6e7);
 }
 
-.hero-engineer img {
+.hero img {
     width: 260px;
     border-radius: 20px;
 }
 
-.hero-text h1 {
+.hero h2 {
     font-family: 'Playfair Display', serif;
     font-size: 52px;
     margin: 0;
 }
 
-.resume-btn {
+/* Glass button */
+.btn-glass {
     display: inline-block;
-    margin-top: 15px;
-    padding: 12px 30px;
-    background: linear-gradient(135deg, #ffd6e7, #fff2a8);
-    color: #333;
+    margin-top: 20px;
+    padding: 12px 28px;
     border-radius: 30px;
+    border: 1px solid white;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    color: white;
     text-decoration: none;
-    font-weight: 600;
+    transition: 0.3s;
 }
 
-/* ================= DANCER HERO ================= */
-.hero-dancer {
+.btn-glass:hover {
+    background: white;
+    color: #7b4fa3;
+}
+
+/* Sections */
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+}
+
+.section {
+    background: rgba(255,255,255,0.6);
+    padding: 30px;
+    border-radius: 20px;
+    margin: 30px 0;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+
+.section:hover {
+    transform: translateY(-5px);
+}
+
+/* Dancer */
+.dancer-mode {
     display: none;
-    min-height: 100vh;
     background: #f4efe8;
+    color: #8a2d2d;
 }
 
-.dancer-split {
+.dancer-hero {
     display: flex;
     min-height: 100vh;
 }
@@ -96,25 +134,10 @@ body {
     flex: 1;
     padding: 80px;
     font-family: 'Playfair Display', serif;
-    color: #8a2d2d;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.dancer-left h1 {
-    font-size: 60px;
-    margin: 0;
 }
 
 .dancer-left h2 {
-    font-size: 26px;
-    letter-spacing: 4px;
-}
-
-.tagline {
-    margin-top: 20px;
-    font-style: italic;
+    font-size: 60px;
 }
 
 .dancer-right {
@@ -127,217 +150,85 @@ body {
     object-fit: cover;
 }
 
-/* ================= SECTIONS ================= */
-.container {
-    width: 90%;
-    max-width: 1000px;
-    margin: auto;
-}
-
-.section {
-    background: rgba(255,255,255,0.7);
-    border-radius: 20px;
-    padding: 30px;
-    margin: 30px 0;
-}
-
-.section h2 {
-    cursor: pointer;
-}
-
-/* Expandable content */
+/* Expand sections */
 .content {
     display: none;
     margin-top: 15px;
-}
-
-/* Dance style tags */
-.styles {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.style {
-    background: #8a2d2d;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 20px;
-}
-
-/* Hide dancer sections initially */
-.dancer-only {
-    display: none;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-    .hero-engineer {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .dancer-split {
-        flex-direction: column;
-    }
-
-    .dancer-right img {
-        height: auto;
-    }
 }
 </style>
 </head>
 
 <body>
 
-<div id="header" class="header engineer">
-    Aabha Rajpal Portfolio
-</div>
-
-<div class="nav" id="nav">
-    <button onclick="setMode('engineer')">Engineer</button>
-    <button onclick="setMode('dancer')">Dancer</button>
-</div>
-
-<!-- ENGINEER HERO -->
-<div class="hero-engineer" id="engineerHero">
-    <img src="photo.jpg" alt="Profile">
-    <div class="hero-text">
-        <h1>Aabha Rajpal</h1>
-        <p>B.Tech Student</p>
-        <a href="Resume.pdf" class="resume-btn" download>Download Resume</a>
+<div class="navbar">
+    <h1>Aabha Rajpal</h1>
+    <div class="toggle">
+        <button id="engBtn" class="active" onclick="setMode('engineer')">Engineer</button>
+        <button id="danceBtn" onclick="setMode('dancer')">Dancer</button>
     </div>
 </div>
 
-<!-- DANCER HERO -->
-<div class="hero-dancer" id="dancerHero">
-    <div class="dancer-split">
+<!-- ENGINEER -->
+<div id="engineer">
+    <div class="hero">
+        <img src="photo.jpg">
+        <div>
+            <h2>Aabha Rajpal</h2>
+            <p>B.Tech Student</p>
+            <a href="Resume.pdf" class="btn-glass">Download Resume</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section">About section</div>
+        <div class="section">Skills section</div>
+        <div class="section">Projects section</div>
+        <div class="section">Contact section</div>
+    </div>
+</div>
+
+<!-- DANCER -->
+<div id="dancer" class="dancer-mode">
+    <div class="dancer-hero">
         <div class="dancer-left">
-            <h1>Aabha Rajpal</h1>
-            <h2>DANCER</h2>
-            <p class="tagline">
-                “I believe in moving and improving every day.”
-            </p>
+            <h2>Aabha Rajpal</h2>
+            <p>Dancer</p>
+            <p><i>I believe in moving and improving every day.</i></p>
         </div>
         <div class="dancer-right">
-            <img src="dancer.jpg" alt="Dance Photo">
-        </div>
-    </div>
-</div>
-
-<div class="container">
-
-    <!-- ABOUT (Engineer) -->
-    <div class="section engineer-only">
-        <h2>About</h2>
-        <p>Your introduction goes here.</p>
-    </div>
-
-    <!-- SKILLS -->
-    <div class="section engineer-only">
-        <h2>Skills</h2>
-        <p>Your skills go here.</p>
-    </div>
-
-    <!-- PROJECTS -->
-    <div class="section engineer-only">
-        <h2>Projects</h2>
-        <p>Your projects go here.</p>
-    </div>
-
-    <!-- CLUBS -->
-    <div class="section engineer-only">
-        <h2>Clubs & Societies</h2>
-        <p>Your clubs go here.</p>
-    </div>
-
-    <!-- EVENTS -->
-    <div class="section engineer-only">
-        <h2>Events & Leadership</h2>
-        <p>Your events go here.</p>
-    </div>
-
-    <!-- DANCER: ABOUT -->
-    <div class="section dancer-only">
-        <h2 onclick="toggleSection('dancerAbout')">Aabha as a Dancer</h2>
-        <div class="content" id="dancerAbout">
-            <p>Your dancer bio will go here.</p>
+            <img src="dancer.jpg">
         </div>
     </div>
 
-    <!-- DANCER: TRAINING -->
-    <div class="section dancer-only">
-        <h2 onclick="toggleSection('training')">Past Training</h2>
-        <div class="content" id="training">
-            <p>Training details will go here.</p>
+    <div class="container">
+        <div class="section">
+            <h3 onclick="toggle('bio')">Aabha as a Dancer</h3>
+            <div id="bio" class="content">Your dancer bio.</div>
         </div>
-    </div>
 
-    <!-- DANCER: STYLES -->
-    <div class="section dancer-only">
-        <h2 onclick="toggleSection('styles')">Dance Styles</h2>
-        <div class="content styles" id="styles">
-            <div class="style">Contemporary</div>
-            <div class="style">Kathak</div>
-            <div class="style">Bollywood</div>
+        <div class="section">
+            <h3 onclick="toggle('training')">Past Training</h3>
+            <div id="training" class="content">Training details.</div>
         </div>
-    </div>
 
-    <!-- CONTACT -->
-    <div class="section" id="contactSection">
-        <h2>Contact</h2>
-        <p id="contactContent">
-            Email: your@email.com<br>
-            Phone: +91-XXXXXXXXXX<br>
-            LinkedIn: your-linkedin
-        </p>
+        <div class="section">Contact: email / phone / Instagram</div>
     </div>
-
 </div>
 
 <script>
 function setMode(mode) {
-    const header = document.getElementById("header");
-    const engineerHero = document.getElementById("engineerHero");
-    const dancerHero = document.getElementById("dancerHero");
-    const contact = document.getElementById("contactContent");
+    document.getElementById("engineer").style.display =
+        mode === "engineer" ? "block" : "none";
+    document.getElementById("dancer").style.display =
+        mode === "dancer" ? "block" : "none";
 
-    const engineerSections = document.querySelectorAll(".engineer-only");
-    const dancerSections = document.querySelectorAll(".dancer-only");
-
-    if (mode === "engineer") {
-        header.className = "header engineer";
-        engineerHero.style.display = "flex";
-        dancerHero.style.display = "none";
-
-        engineerSections.forEach(s => s.style.display = "block");
-        dancerSections.forEach(s => s.style.display = "none");
-
-        contact.innerHTML = `
-            Email: your@email.com<br>
-            Phone: +91-XXXXXXXXXX<br>
-            LinkedIn: your-linkedin
-        `;
-    } else {
-        header.className = "header dancer";
-        engineerHero.style.display = "none";
-        dancerHero.style.display = "block";
-
-        engineerSections.forEach(s => s.style.display = "none");
-        dancerSections.forEach(s => s.style.display = "block");
-
-        contact.innerHTML = `
-            Email: your@email.com<br>
-            Phone: +91-XXXXXXXXXX<br>
-            Instagram: @yourhandle
-        `;
-    }
+    document.getElementById("engBtn").classList.toggle("active", mode==="engineer");
+    document.getElementById("danceBtn").classList.toggle("active", mode==="dancer");
 }
 
-function toggleSection(id) {
-    const section = document.getElementById(id);
-    section.style.display =
-        section.style.display === "block" ? "none" : "block";
+function toggle(id) {
+    const el = document.getElementById(id);
+    el.style.display = el.style.display === "block" ? "none" : "block";
 }
 </script>
 
