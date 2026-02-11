@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aabha Rajpal Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
 body {
@@ -14,35 +14,40 @@ body {
     transition: 0.4s;
 }
 
-/* Mode toggle */
-.mode-toggle {
-    position: fixed;
-    top: 15px;
-    right: 20px;
-    z-index: 20;
+/* ================= HEADER ================= */
+.header {
+    padding: 18px;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
 }
 
-.mode-toggle button {
-    margin-left: 5px;
-    padding: 6px 12px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
+/* Engineer header */
+.header.engineer {
+    background: linear-gradient(90deg, #f8c8ff, #cda4ff);
+    color: white;
+}
+
+/* Dancer header */
+.header.dancer {
+    background: #f4efe8;
+    color: #8a2d2d;
+}
+
+/* ================= NAV ================= */
+.nav {
+    text-align: center;
+    padding: 10px;
+}
+
+.nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #7b4fa3;
     font-weight: 500;
 }
 
-/* Header */
-.header {
-    width: 100%;
-    padding: 20px;
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 30px;
-    color: white;
-    background: linear-gradient(90deg, #f8c8ff, #cda4ff);
-}
-
-/* ---------------- ENGINEER MODE ---------------- */
+/* ================= ENGINEER HERO ================= */
 .hero-engineer {
     display: flex;
     align-items: center;
@@ -64,10 +69,6 @@ body {
     margin: 0;
 }
 
-.hero-text p {
-    margin: 15px 0;
-}
-
 .resume-btn {
     display: inline-block;
     margin-top: 15px;
@@ -79,7 +80,7 @@ body {
     font-weight: 600;
 }
 
-/* ---------------- DANCER MODE ---------------- */
+/* ================= DANCER HERO ================= */
 .hero-dancer {
     display: none;
     min-height: 100vh;
@@ -93,12 +94,12 @@ body {
 
 .dancer-left {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     padding: 80px;
     font-family: 'Playfair Display', serif;
     color: #8a2d2d;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .dancer-left h1 {
@@ -107,18 +108,17 @@ body {
 }
 
 .dancer-left h2 {
-    font-size: 28px;
-    margin: 15px 0;
-    letter-spacing: 3px;
+    font-size: 26px;
+    letter-spacing: 4px;
 }
 
-.dancer-left p {
-    font-size: 18px;
-    margin-top: 10px;
+.tagline {
+    margin-top: 20px;
+    font-style: italic;
 }
 
 .dancer-right {
-    flex: 1;
+    flex: 2;
 }
 
 .dancer-right img {
@@ -127,22 +127,9 @@ body {
     object-fit: cover;
 }
 
-/* Single photo section */
-.dancer-photo {
-    display: none;
-    width: 100%;
-    background: #f4efe8;
-}
-
-.dancer-photo img {
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-}
-
-/* Sections */
+/* ================= SECTIONS ================= */
 .container {
-    width: 92%;
+    width: 90%;
     max-width: 1000px;
     margin: auto;
 }
@@ -152,6 +139,35 @@ body {
     border-radius: 20px;
     padding: 30px;
     margin: 30px 0;
+}
+
+.section h2 {
+    cursor: pointer;
+}
+
+/* Expandable content */
+.content {
+    display: none;
+    margin-top: 15px;
+}
+
+/* Dance style tags */
+.styles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.style {
+    background: #8a2d2d;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+}
+
+/* Hide dancer sections initially */
+.dancer-only {
+    display: none;
 }
 
 /* Mobile */
@@ -174,13 +190,13 @@ body {
 
 <body>
 
-<div class="mode-toggle">
-    <button onclick="setMode('engineer')">Engineer</button>
-    <button onclick="setMode('dancer')">Dancer</button>
+<div id="header" class="header engineer">
+    Aabha Rajpal Portfolio
 </div>
 
-<div class="header">
-    Aabha Rajpal Portfolio
+<div class="nav" id="nav">
+    <button onclick="setMode('engineer')">Engineer</button>
+    <button onclick="setMode('dancer')">Dancer</button>
 </div>
 
 <!-- ENGINEER HERO -->
@@ -199,46 +215,129 @@ body {
         <div class="dancer-left">
             <h1>Aabha Rajpal</h1>
             <h2>DANCER</h2>
-            <p>Performer & Choreographer</p>
+            <p class="tagline">
+                “I believe in moving and improving every day.”
+            </p>
         </div>
-
         <div class="dancer-right">
             <img src="dancer.jpg" alt="Dance Photo">
         </div>
     </div>
 </div>
 
-<!-- SINGLE PHOTO SECTION -->
-<div class="dancer-photo" id="dancerPhoto">
-    <img src="dancer.jpg" alt="Dance">
-</div>
-
-<!-- BASIC CONTENT -->
 <div class="container">
-    <div class="section">
+
+    <!-- ABOUT (Engineer) -->
+    <div class="section engineer-only">
         <h2>About</h2>
-        <p>Your introduction will go here.</p>
+        <p>Your introduction goes here.</p>
     </div>
 
-    <div class="section">
-        <h2>Contact</h2>
-        <p>Your contact details will go here.</p>
+    <!-- SKILLS -->
+    <div class="section engineer-only">
+        <h2>Skills</h2>
+        <p>Your skills go here.</p>
     </div>
+
+    <!-- PROJECTS -->
+    <div class="section engineer-only">
+        <h2>Projects</h2>
+        <p>Your projects go here.</p>
+    </div>
+
+    <!-- CLUBS -->
+    <div class="section engineer-only">
+        <h2>Clubs & Societies</h2>
+        <p>Your clubs go here.</p>
+    </div>
+
+    <!-- EVENTS -->
+    <div class="section engineer-only">
+        <h2>Events & Leadership</h2>
+        <p>Your events go here.</p>
+    </div>
+
+    <!-- DANCER: ABOUT -->
+    <div class="section dancer-only">
+        <h2 onclick="toggleSection('dancerAbout')">Aabha as a Dancer</h2>
+        <div class="content" id="dancerAbout">
+            <p>Your dancer bio will go here.</p>
+        </div>
+    </div>
+
+    <!-- DANCER: TRAINING -->
+    <div class="section dancer-only">
+        <h2 onclick="toggleSection('training')">Past Training</h2>
+        <div class="content" id="training">
+            <p>Training details will go here.</p>
+        </div>
+    </div>
+
+    <!-- DANCER: STYLES -->
+    <div class="section dancer-only">
+        <h2 onclick="toggleSection('styles')">Dance Styles</h2>
+        <div class="content styles" id="styles">
+            <div class="style">Contemporary</div>
+            <div class="style">Kathak</div>
+            <div class="style">Bollywood</div>
+        </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="section" id="contactSection">
+        <h2>Contact</h2>
+        <p id="contactContent">
+            Email: your@email.com<br>
+            Phone: +91-XXXXXXXXXX<br>
+            LinkedIn: your-linkedin
+        </p>
+    </div>
+
 </div>
 
 <script>
 function setMode(mode) {
+    const header = document.getElementById("header");
+    const engineerHero = document.getElementById("engineerHero");
+    const dancerHero = document.getElementById("dancerHero");
+    const contact = document.getElementById("contactContent");
+
+    const engineerSections = document.querySelectorAll(".engineer-only");
+    const dancerSections = document.querySelectorAll(".dancer-only");
+
     if (mode === "engineer") {
-        document.getElementById("engineerHero").style.display = "flex";
-        document.getElementById("dancerHero").style.display = "none";
-        document.getElementById("dancerPhoto").style.display = "none";
-        document.body.style.background = "#ffffff";
+        header.className = "header engineer";
+        engineerHero.style.display = "flex";
+        dancerHero.style.display = "none";
+
+        engineerSections.forEach(s => s.style.display = "block");
+        dancerSections.forEach(s => s.style.display = "none");
+
+        contact.innerHTML = `
+            Email: your@email.com<br>
+            Phone: +91-XXXXXXXXXX<br>
+            LinkedIn: your-linkedin
+        `;
     } else {
-        document.getElementById("engineerHero").style.display = "none";
-        document.getElementById("dancerHero").style.display = "block";
-        document.getElementById("dancerPhoto").style.display = "block";
-        document.body.style.background = "#f4efe8";
+        header.className = "header dancer";
+        engineerHero.style.display = "none";
+        dancerHero.style.display = "block";
+
+        engineerSections.forEach(s => s.style.display = "none");
+        dancerSections.forEach(s => s.style.display = "block");
+
+        contact.innerHTML = `
+            Email: your@email.com<br>
+            Phone: +91-XXXXXXXXXX<br>
+            Instagram: @yourhandle
+        `;
     }
+}
+
+function toggleSection(id) {
+    const section = document.getElementById(id);
+    section.style.display =
+        section.style.display === "block" ? "none" : "block";
 }
 </script>
 
