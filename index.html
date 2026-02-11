@@ -20,12 +20,13 @@ body {
     overflow-x: hidden;
 }
 
-/* Floating butterflies */
+/* Floating butterflies (emoji) */
 .butterfly {
     position: fixed;
-    width: 40px;
+    font-size: 30px;
     opacity: 0.8;
     animation: float 15s linear infinite;
+    pointer-events: none;
 }
 
 .b1 { left: 10%; top: 90%; }
@@ -115,10 +116,10 @@ ul {
 
 <body>
 
-<!-- REAL butterflies -->
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Butterfly_icon.svg" class="butterfly b1">
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Butterfly_icon.svg" class="butterfly b2">
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Butterfly_icon.svg" class="butterfly b3">
+<!-- Butterfly emojis -->
+<div class="butterfly b1">🦋</div>
+<div class="butterfly b2">🦋</div>
+<div class="butterfly b3">🦋</div>
 
 <div class="container">
 
@@ -196,4 +197,3 @@ revealSections();
 
 </body>
 </html>
-
