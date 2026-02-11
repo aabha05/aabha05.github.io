@@ -6,8 +6,11 @@
 <title>Aabha Rajpal</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+html { scroll-behavior: smooth; }
+
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -15,7 +18,7 @@ body {
     background: linear-gradient(135deg, #f3e8ff, #e0c3fc, #ffd6e7);
 }
 
-/* ===== NAVBAR ===== */
+/* NAVBAR */
 .navbar {
     position: sticky;
     top: 0;
@@ -26,18 +29,19 @@ body {
     padding: 14px 40px;
     transition: 0.4s;
 }
-
 .navbar.engineer {
     background: linear-gradient(90deg, #cda4ff, #f8c8ff);
     color: white;
 }
-
 .navbar.dancer {
     background: #f4efe8;
     color: #8a2d2d;
     border-bottom: 1px solid #e0d6c8;
 }
-
+.navbar.scrolled {
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.2);
+}
 .navbar h1 {
     margin: 0;
     font-family: 'Playfair Display', serif;
@@ -51,7 +55,6 @@ body {
     display: flex;
     gap: 5px;
 }
-
 .toggle button {
     border: none;
     padding: 8px 18px;
@@ -60,7 +63,6 @@ body {
     color: inherit;
     cursor: pointer;
 }
-
 .toggle button.active {
     background: white;
     color: #7b4fa3;
@@ -75,12 +77,16 @@ body {
     min-height: 90vh;
     padding: 40px;
 }
-
 .hero img {
     width: 260px;
     border-radius: 20px;
+    animation: float 4s ease-in-out infinite;
 }
-
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0); }
+}
 .hero h2 {
     font-family: 'Playfair Display', serif;
     font-size: 52px;
@@ -98,10 +104,10 @@ body {
     text-decoration: none;
     transition: 0.3s;
 }
-
 .btn-glass:hover {
     background: white;
     color: #7b4fa3;
+    box-shadow: 0 0 15px rgba(255,255,255,0.8);
 }
 
 /* Sections */
@@ -110,7 +116,6 @@ body {
     max-width: 900px;
     margin: auto;
 }
-
 .section {
     background: rgba(255,255,255,0.65);
     padding: 30px;
@@ -121,12 +126,10 @@ body {
     opacity: 0;
     transform: translateY(40px);
 }
-
 .section.visible {
     opacity: 1;
     transform: translateY(0);
 }
-
 .section:hover {
     transform: translateY(-5px);
 }
@@ -137,32 +140,39 @@ body {
     margin-top: 15px;
 }
 
+/* Social icons */
+.social-icons {
+    margin-top: 12px;
+}
+.social-icons a {
+    font-size: 28px;
+    margin-right: 15px;
+    color: #7b4fa3;
+    transition: 0.3s;
+}
+.social-icons a:hover {
+    color: #5a2f82;
+    transform: scale(1.2);
+}
+
 /* Dancer */
 .dancer-mode {
     display: none;
     background: #f4efe8;
     color: #8a2d2d;
 }
-
 .dancer-hero {
     display: flex;
     min-height: 100vh;
 }
-
 .dancer-left {
     flex: 1;
     padding: 80px;
     font-family: 'Playfair Display', serif;
 }
-
 .dancer-left h2 {
     font-size: 60px;
 }
-
-.dancer-right {
-    flex: 2;
-}
-
 .dancer-right img {
     width: 100%;
     height: 100vh;
@@ -197,14 +207,14 @@ body {
 <!-- ENGINEER -->
 <div id="engineer">
     <div class="hero">
-        <img src="photo2.jpg">
+        <img src="photo.jpg">
         <div>
-            <h2>Aabha Rajpal</h2>
-            <p>B.Tech Student</p>
+            <h2 id="typing"></h2>
+            <p>B.Tech CSE Student | Tech & Event Leader</p>
 
             <a href="Resume.pdf" class="btn-glass">Download Resume</a>
             <a href="#skills" class="btn-glass">Skills</a>
-            <a href="#projects" class="btn-glass">Projects</a>
+            <a href="#projects" class="btn-glass">Experience</a>
             <a href="#contact" class="btn-glass">Contact</a>
         </div>
     </div>
@@ -213,29 +223,42 @@ body {
         <div class="section" id="about">
             <h3 onclick="toggle('aboutContent')">About</h3>
             <div id="aboutContent" class="content">
-                Your introduction here.
+                Aabha is a second-year CSE student with proven experience in leading and coordinating technical events and initiatives.
+                She is known for strong problem-solving, communication, and leadership skills.
             </div>
         </div>
 
         <div class="section" id="skills">
             <h3 onclick="toggle('skillsContent')">Skills</h3>
             <div id="skillsContent" class="content">
-                Your skills here.
+                <b>Technical:</b> C, Python, Java, HTML, CSS, JavaScript, DSA, OOPS, DBMS, MySQL<br><br>
+                <b>Soft Skills:</b> Communication, Leadership, Marketing, Team Coordination<br><br>
+                <b>Languages:</b> Hindi, English, French
             </div>
         </div>
 
         <div class="section" id="projects">
-            <h3 onclick="toggle('projectsContent')">Projects</h3>
+            <h3 onclick="toggle('projectsContent')">Experience & Achievements</h3>
             <div id="projectsContent" class="content">
-                Your projects here.
+                • Smart India Hackathon Finalist<br>
+                • Dean’s List Award (MUJ)<br>
+                • Head of Promotions – IEEE CS MUJ<br>
+                • Events Coordinator – IAESTE LC MUJ<br>
+                • Assistant Secretary General – MUJMUN
             </div>
         </div>
 
         <div class="section" id="contact">
-            Contact:<br>
-            Email: your@email.com<br>
-            Phone: +91-XXXXXXXXXX<br>
-            LinkedIn: your-linkedin
+            <h3>Contact</h3>
+            Email: aabharajpal0805@gmail.com<br>
+            Phone: +91 9910357221<br>
+            Location: New Delhi, India
+
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/YOUR-LINKEDIN-USERNAME" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
         </div>
     </div>
 </div>
@@ -246,29 +269,14 @@ body {
         <div class="dancer-left">
             <h2>Aabha Rajpal</h2>
             <p>Dancer</p>
-            <p><i>I believe in moving and improving every day.</i></p>
+            <p><i>Creative, expressive, and dedicated to continuous growth.</i></p>
+            <p>
+            Styles: Street Jazz, House, Popping<br>
+            Strengths: Textures, Improv, Musicality, Isolation
+            </p>
         </div>
         <div class="dancer-right">
             <img src="dancer.jpg">
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="section">
-            <h3 onclick="toggle('bio')">Aabha as a Dancer</h3>
-            <div id="bio" class="content">Your dancer bio.</div>
-        </div>
-
-        <div class="section">
-            <h3 onclick="toggle('training')">Past Training</h3>
-            <div id="training" class="content">Training details.</div>
-        </div>
-
-        <div class="section">
-            Contact:<br>
-            Email: your@email.com<br>
-            Phone: +91-XXXXXXXXXX<br>
-            Instagram: @yourhandle
         </div>
     </div>
 </div>
@@ -306,6 +314,18 @@ function toggle(id) {
         el.style.display === "block" ? "none" : "block";
 }
 
+/* Typing animation */
+const text = "Aabha Rajpal";
+let index = 0;
+function type() {
+    if (index < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(type, 80);
+    }
+}
+type();
+
 /* Cursor */
 const cursor = document.getElementById("cursor");
 document.addEventListener("mousemove", e => {
@@ -316,12 +336,24 @@ document.addEventListener("mousemove", e => {
 /* Scroll reveal */
 const sections = document.querySelectorAll(".section");
 window.addEventListener("scroll", () => {
-    sections.forEach(sec => {
+    sections.forEach((sec, i) => {
         const rect = sec.getBoundingClientRect();
         if (rect.top < window.innerHeight - 80) {
-            sec.classList.add("visible");
+            setTimeout(() => {
+                sec.classList.add("visible");
+            }, i * 120);
         }
     });
+});
+
+/* Navbar blur */
+window.addEventListener("scroll", () => {
+    const nav = document.getElementById("navbar");
+    if (window.scrollY > 20) {
+        nav.classList.add("scrolled");
+    } else {
+        nav.classList.remove("scrolled");
+    }
 });
 </script>
 
