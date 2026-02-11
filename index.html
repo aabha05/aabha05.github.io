@@ -6,8 +6,21 @@
 <title>Your Name | Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
+:root {
+    --bg: linear-gradient(135deg, #f7d9ff, #e0c3fc, #ffd6e7);
+    --card: rgba(255,255,255,0.45);
+    --text: #333;
+}
+
+body.dark {
+    --bg: linear-gradient(135deg, #2a1a3f, #3b2255);
+    --card: rgba(0,0,0,0.45);
+    --text: #f3e9ff;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -16,45 +29,42 @@
 }
 
 body {
-    background: linear-gradient(135deg, #f7d9ff, #e0c3fc, #ffd6e7);
-    overflow-x: hidden;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.4s;
 }
 
-/* Floating butterflies (emoji) */
-.butterfly {
+/* Dark mode toggle */
+.toggle {
     position: fixed;
-    font-size: 30px;
-    opacity: 0.8;
-    animation: float 15s linear infinite;
-    pointer-events: none;
+    top: 15px;
+    right: 15px;
+    background: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
 }
 
-.b1 { left: 10%; top: 90%; }
-.b2 { left: 80%; top: 85%; animation-delay: 5s; }
-.b3 { left: 50%; top: 95%; animation-delay: 10s; }
-
-@keyframes float {
-    from { transform: translateY(0); }
-    to { transform: translateY(-120vh); }
-}
-
+/* Container */
 .container {
     max-width: 900px;
     margin: auto;
-    padding: 30px 20px;
+    padding: 40px 20px;
 }
 
+/* Glass cards */
 .section {
-    background: rgba(255,255,255,0.45);
+    background: var(--card);
     backdrop-filter: blur(12px);
     border-radius: 20px;
     padding: 30px;
-    margin-bottom: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 
     opacity: 0;
     transform: translateY(40px);
-    transition: all 0.8s ease;
+    transition: 0.8s;
 }
 
 .section.visible {
@@ -66,13 +76,8 @@ h1, h2 {
     color: #7b4fa3;
 }
 
-p, li {
-    color: #333;
+p {
     line-height: 1.6;
-}
-
-ul {
-    padding-left: 20px;
 }
 
 /* Profile */
@@ -83,26 +88,56 @@ ul {
 .profile img {
     width: 130px;
     border-radius: 50%;
-    border: 5px solid white;
+    padding: 4px;
+    background: linear-gradient(135deg, #ffb3e6, #cda4ff);
     margin-bottom: 10px;
 }
 
-/* Resume button */
 .resume-btn {
     display: inline-block;
-    margin-top: 12px;
-    padding: 12px 25px;
+    margin-top: 10px;
+    padding: 10px 25px;
     background: linear-gradient(135deg, #ffb3e6, #cda4ff);
     color: white;
-    text-decoration: none;
     border-radius: 30px;
-    font-weight: 500;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-    transition: 0.3s;
+    text-decoration: none;
 }
 
-.resume-btn:hover {
-    transform: scale(1.05);
+/* Skill tags */
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill {
+    padding: 8px 15px;
+    background: white;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+/* Project cards */
+.projects {
+    display: grid;
+    gap: 15px;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+/* Social icons */
+.socials {
+    margin-top: 10px;
+}
+
+.socials i {
+    margin: 0 8px;
+    font-size: 20px;
+    color: #7b4fa3;
 }
 
 /* Mobile */
@@ -116,19 +151,22 @@ ul {
 
 <body>
 
-<!-- Butterfly emojis -->
-<div class="butterfly b1">🦋</div>
-<div class="butterfly b2">🦋</div>
-<div class="butterfly b3">🦋</div>
+<div class="toggle" onclick="toggleDark()">🌙</div>
 
 <div class="container">
 
     <!-- Profile -->
     <div class="section profile">
-        <img src="photo.jpg" alt="Profile Photo">
+        <img src="photo.jpg" alt="Profile">
         <h1>Your Name</h1>
         <p>your@email.com • +91-XXXXXXXXXX</p>
         <a href="resume.pdf" class="resume-btn" download>Download Resume</a>
+
+        <div class="socials">
+            <i class="fab fa-github"></i>
+            <i class="fab fa-linkedin"></i>
+            <i class="fab fa-instagram"></i>
+        </div>
     </div>
 
     <!-- About -->
@@ -142,19 +180,24 @@ ul {
     <!-- Skills -->
     <div class="section">
         <h2>Skills</h2>
-        <ul>
-            <li>C Programming</li>
-            <li>HTML & CSS</li>
-            <li>Data Structures</li>
-            <li>Problem Solving</li>
-        </ul>
+        <div class="skills">
+            <div class="skill">C Programming</div>
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+            <div class="skill">Data Structures</div>
+            <div class="skill">Problem Solving</div>
+        </div>
     </div>
 
     <!-- Projects -->
     <div class="section">
         <h2>Projects</h2>
-        <p><strong>Hotel Management System</strong><br>
-        Oracle APEX-based application for hotel operations.</p>
+        <div class="projects">
+            <div class="card">
+                <strong>Hotel Management System</strong>
+                <p>Oracle APEX-based application for hotel operations.</p>
+            </div>
+        </div>
     </div>
 
     <!-- Clubs -->
@@ -178,21 +221,21 @@ ul {
 </div>
 
 <script>
-/* Scroll reveal animation */
+/* Scroll animation */
 const sections = document.querySelectorAll('.section');
-
-function revealSections() {
+window.addEventListener('scroll', () => {
     const trigger = window.innerHeight * 0.85;
-    sections.forEach(section => {
-        const top = section.getBoundingClientRect().top;
-        if (top < trigger) {
-            section.classList.add('visible');
+    sections.forEach(sec => {
+        if (sec.getBoundingClientRect().top < trigger) {
+            sec.classList.add('visible');
         }
     });
-}
+});
 
-window.addEventListener('scroll', revealSections);
-revealSections();
+/* Dark mode */
+function toggleDark() {
+    document.body.classList.toggle('dark');
+}
 </script>
 
 </body>
