@@ -8,23 +8,29 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #f7d9ff, #e0c3fc, #ffd6e7);
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* butterflies */
+body {
+    background: linear-gradient(135deg, #f7d9ff, #e0c3fc, #ffd6e7);
+    overflow-x: hidden;
+}
+
+/* Floating butterflies */
 .butterfly {
     position: fixed;
-    width: 35px;
-    opacity: 0.7;
-    animation: float 12s linear infinite;
+    width: 40px;
+    opacity: 0.8;
+    animation: float 15s linear infinite;
 }
+
 .b1 { left: 10%; top: 90%; }
-.b2 { left: 80%; top: 85%; animation-delay: 4s; }
-.b3 { left: 50%; top: 95%; animation-delay: 8s; }
+.b2 { left: 80%; top: 85%; animation-delay: 5s; }
+.b3 { left: 50%; top: 95%; animation-delay: 10s; }
 
 @keyframes float {
     from { transform: translateY(0); }
@@ -32,97 +38,162 @@ body {
 }
 
 .container {
-    max-width: 850px;
+    max-width: 900px;
     margin: auto;
-    padding: 20px;
+    padding: 30px 20px;
 }
 
 .section {
     background: rgba(255,255,255,0.4);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     border-radius: 20px;
-    padding: 25px;
-    margin: 20px 0;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 h1, h2 {
     color: #7b4fa3;
 }
 
+p, li {
+    color: #333;
+    line-height: 1.6;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+/* Profile */
 .profile {
     text-align: center;
 }
 
 .profile img {
-    width: 120px;
+    width: 130px;
     border-radius: 50%;
-    border: 4px solid white;
+    border: 5px solid white;
+    margin-bottom: 10px;
 }
 
+/* Resume button */
 .resume-btn {
     display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
+    margin-top: 12px;
+    padding: 12px 25px;
     background: linear-gradient(135deg, #ffb3e6, #cda4ff);
     color: white;
-    border-radius: 25px;
     text-decoration: none;
+    border-radius: 30px;
+    font-weight: 500;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    transition: 0.3s;
+}
+
+.resume-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .section {
+        padding: 20px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- butterflies -->
-<img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="butterfly b1">
-<img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="butterfly b2">
-<img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="butterfly b3">
+<!-- Butterflies -->
+<img src="https://cdn-icons-png.flaticon.com/512/3468/3468377.png" class="butterfly b1">
+<img src="https://cdn-icons-png.flaticon.com/512/3468/3468377.png" class="butterfly b2">
+<img src="https://cdn-icons-png.flaticon.com/512/3468/3468377.png" class="butterfly b3">
 
 <div class="container">
 
-<div class="section profile">
-    <img src="photo.jpg">
-    <h1>Your Name</h1>
-    <p>your@email.com • +91-XXXXXXXXXX</p>
-    <a href="resume.pdf" class="resume-btn" download>Download Resume</a>
+    <!-- Profile -->
+    <div class="section profile">
+        <img src="photo.jpg" alt="Profile Photo">
+        <h1>Your Name</h1>
+        <p>your@email.com • +91-XXXXXXXXXX</p>
+        <a href="resume.pdf" class="resume-btn" download>Download Resume</a>
+    </div>
+
+    <!-- About -->
+    <div class="section">
+        <h2>About Me</h2>
+        <p>
+            B.Tech student passionate about technology, creative events, and leadership.
+        </p>
+    </div>
+
+    <!-- Skills -->
+    <div class="section">
+        <h2>Skills</h2>
+        <ul>
+            <li>C Programming</li>
+            <li>HTML & CSS</li>
+            <li>Data Structures</li>
+            <li>Problem Solving</li>
+        </ul>
+    </div>
+
+    <!-- Projects -->
+    <div class="section">
+        <h2>Projects</h2>
+        <p><strong>Hotel Management System</strong><br>
+        Oracle APEX-based application for hotel operations.</p>
+    </div>
+
+    <!-- Clubs -->
+    <div class="section">
+        <h2>College Clubs & Societies</h2>
+        <ul>
+            <li>Technical Club – Core Member</li>
+            <li>Cultural Society – Event Team</li>
+        </ul>
+    </div>
+
+    <!-- Events -->
+    <div class="section">
+        <h2>Events & Leadership</h2>
+        <ul>
+            <li>Organized MotoGP-themed Datathon “Burnout”</li>
+            <li>Hosted Instagram Live with industry guest</li>
+        </ul>
+    </div>
+
 </div>
 
-<div class="section">
-    <h2>About Me</h2>
-    <p>B.Tech student passionate about technology, events, and creative projects.</p>
-</div>
+<script>
+/* Scroll reveal animation */
+const sections = document.querySelectorAll('.section');
 
-<div class="section">
-    <h2>Skills</h2>
-    <ul>
-        <li>C Programming</li>
-        <li>HTML & CSS</li>
-        <li>Problem Solving</li>
-    </ul>
-</div>
+function revealSections() {
+    const trigger = window.innerHeight * 0.85;
+    sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < trigger) {
+            section.classList.add('visible');
+        }
+    });
+}
 
-<div class="section">
-    <h2>Projects</h2>
-    <p><strong>Hotel Management System</strong> – Oracle APEX application.</p>
-</div>
+window.addEventListener('scroll', revealSections);
+revealSections();
+</script>
 
-<div class="section">
-    <h2>College Clubs & Societies</h2>
-    <ul>
-        <li>Technical Club – Member</li>
-        <li>Cultural Society – Event Team</li>
-    </ul>
-</div>
-
-<div class="section">
-    <h2>Events & Leadership</h2>
-    <ul>
-        <li>Organized MotoGP Datathon “Burnout”</li>
-        <li>Hosted Instagram Live with industry guest</li>
-    </ul>
-</div>
-
-</div>
 </body>
 </html>
+
