@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Name | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f7d9ff, #e0c3fc, #ffd6e7);
+    margin: 0;
+    padding: 0;
+}
+
+/* butterflies */
+.butterfly {
+    position: fixed;
+    width: 35px;
+    opacity: 0.7;
+    animation: float 12s linear infinite;
+}
+.b1 { left: 10%; top: 90%; }
+.b2 { left: 80%; top: 85%; animation-delay: 4s; }
+.b3 { left: 50%; top: 95%; animation-delay: 8s; }
+
+@keyframes float {
+    from { transform: translateY(0); }
+    to { transform: translateY(-120vh); }
+}
+
+.container {
+    max-width: 850px;
+    margin: auto;
+    padding: 20px;
+}
+
+.section {
+    background: rgba(255,255,255,0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 25px;
+    margin: 20px 0;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+    color: #7b4fa3;
+}
+
+.profile {
+    text-align: center;
+}
+
+.profile img {
+    width: 120px;
+    border-radius: 50%;
+    border: 4px solid white;
+}
+
+.resume-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #ffb3e6, #cda4ff);
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- butterflies -->
+<img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="butterfly b1">
+<img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="butterfly b2">
+<img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="butterfly b3">
+
+<div class="container">
+
+<div class="section profile">
+    <img src="photo.jpg">
+    <h1>Your Name</h1>
+    <p>your@email.com • +91-XXXXXXXXXX</p>
+    <a href="resume.pdf" class="resume-btn" download>Download Resume</a>
+</div>
+
+<div class="section">
+    <h2>About Me</h2>
+    <p>B.Tech student passionate about technology, events, and creative projects.</p>
+</div>
+
+<div class="section">
+    <h2>Skills</h2>
+    <ul>
+        <li>C Programming</li>
+        <li>HTML & CSS</li>
+        <li>Problem Solving</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>Projects</h2>
+    <p><strong>Hotel Management System</strong> – Oracle APEX application.</p>
+</div>
+
+<div class="section">
+    <h2>College Clubs & Societies</h2>
+    <ul>
+        <li>Technical Club – Member</li>
+        <li>Cultural Society – Event Team</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>Events & Leadership</h2>
+    <ul>
+        <li>Organized MotoGP Datathon “Burnout”</li>
+        <li>Hosted Instagram Live with industry guest</li>
+    </ul>
+</div>
+
+</div>
+</body>
+</html>
