@@ -15,71 +15,103 @@ body {
     color: #333;
 }
 
-/* Top header */
+/* Header bar */
 .header {
     width: 100%;
-    background: linear-gradient(90deg, #d7a6ff, #ffb3e6);
-    padding: 20px;
+    padding: 22px;
     text-align: center;
     font-family: 'Playfair Display', serif;
-    font-size: 32px;
+    font-size: 34px;
+    background: linear-gradient(90deg, #d7a6ff, #ffb3e6);
     color: white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
-/* Stickers */
-.sticker {
-    position: absolute;
-    width: 80px;
+/* Container */
+.container {
+    width: 92%;
+    max-width: 1200px;
+    margin: auto;
 }
 
-.sunflower {
-    top: 80px;
-    left: 20px;
-}
-
-.butterfly {
-    top: 200px;
-    right: 30px;
-}
-
-/* Sections full width */
+/* Glass sections */
 .section {
-    width: 90%;
-    margin: 30px auto;
-    background: rgba(255,255,255,0.5);
-    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(12px);
     border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    padding: 40px;
+    margin: 40px 0;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
-h2 {
+h1, h2 {
     color: #7b4fa3;
 }
 
-/* Expand buttons */
-.toggle-btn {
-    margin-top: 10px;
-    padding: 8px 18px;
-    border: none;
-    background: linear-gradient(135deg, #ffb3e6, #cda4ff);
-    color: white;
-    border-radius: 20px;
-    cursor: pointer;
+/* Hero */
+.hero {
+    text-align: center;
 }
 
-.content {
-    display: none;
+.hero img {
+    width: 140px;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(135deg, #ffb3e6, #cda4ff);
+    margin-bottom: 15px;
+}
+
+.resume-btn {
+    display: inline-block;
     margin-top: 15px;
+    padding: 12px 28px;
+    background: linear-gradient(135deg, #ffb3e6, #cda4ff);
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Skills */
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill {
+    background: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+/* Project cards */
+.projects {
+    display: grid;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
 }
 
 /* Contact */
 .contact a {
     display: block;
-    margin: 5px 0;
+    margin: 6px 0;
     color: #6a3ea1;
     text-decoration: none;
+    font-weight: 500;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .section {
+        padding: 25px;
+    }
 }
 </style>
 </head>
@@ -90,80 +122,75 @@ h2 {
     Aabha Rajpal Portfolio
 </div>
 
-<!-- Stickers -->
-<img src="https://cdn-icons-png.flaticon.com/512/2909/2909762.png" class="sticker sunflower">
-<img src="https://cdn-icons-png.flaticon.com/512/3468/3468377.png" class="sticker butterfly">
+<div class="container">
 
-<!-- About -->
-<div class="section">
-    <h2>About Me</h2>
-    <p>B.Tech student passionate about technology, events, and creative projects.</p>
-</div>
-
-<!-- Skills -->
-<div class="section">
-    <h2>Skills</h2>
-    <button class="toggle-btn" onclick="toggleSection('skills')">Show Skills</button>
-    <div id="skills" class="content">
-        <ul>
-            <li>C Programming</li>
-            <li>HTML & CSS</li>
-            <li>Data Structures</li>
-        </ul>
+    <!-- Hero -->
+    <div class="section hero">
+        <img src="photo.jpg" alt="Profile">
+        <h1>Aabha Rajpal</h1>
+        <p>B.Tech Student | Tech & Event Enthusiast</p>
+        <a href="resume.pdf" class="resume-btn" download>Download Resume</a>
     </div>
-</div>
 
-<!-- Projects -->
-<div class="section">
-    <h2>Projects</h2>
-    <button class="toggle-btn" onclick="toggleSection('projects')">Show Projects</button>
-    <div id="projects" class="content">
-        <p><strong>Hotel Management System</strong> – Oracle APEX application.</p>
+    <!-- About -->
+    <div class="section">
+        <h2>About Me</h2>
+        <p>
+            Passionate B.Tech student involved in technical projects,
+            event management, and creative initiatives.
+        </p>
     </div>
-</div>
 
-<!-- Clubs -->
-<div class="section">
-    <h2>College Clubs & Societies</h2>
-    <button class="toggle-btn" onclick="toggleSection('clubs')">Show Clubs</button>
-    <div id="clubs" class="content">
+    <!-- Skills -->
+    <div class="section">
+        <h2>Skills</h2>
+        <div class="skills">
+            <div class="skill">C Programming</div>
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+            <div class="skill">Data Structures</div>
+            <div class="skill">Problem Solving</div>
+        </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="section">
+        <h2>Projects</h2>
+        <div class="projects">
+            <div class="card">
+                <strong>Hotel Management System</strong>
+                <p>Oracle APEX-based application for hotel operations.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Clubs -->
+    <div class="section">
+        <h2>College Clubs & Societies</h2>
         <ul>
             <li>Technical Club – Core Member</li>
             <li>Cultural Society – Event Team</li>
         </ul>
     </div>
-</div>
 
-<!-- Events -->
-<div class="section">
-    <h2>Events & Leadership</h2>
-    <button class="toggle-btn" onclick="toggleSection('events')">Show Events</button>
-    <div id="events" class="content">
+    <!-- Events -->
+    <div class="section">
+        <h2>Events & Leadership</h2>
         <ul>
             <li>Organized MotoGP-themed Datathon “Burnout”</li>
-            <li>Hosted Instagram Live with industry guest</li>
+            <li>Hosted Instagram Live session with industry guest</li>
         </ul>
     </div>
-</div>
 
-<!-- Contact -->
-<div class="section contact">
-    <h2>Contact Me</h2>
-    <a href="mailto:your@email.com">Email</a>
-    <a href="#">LinkedIn</a>
-    <a href="#">GitHub</a>
-</div>
+    <!-- Contact -->
+    <div class="section contact">
+        <h2>Contact Me</h2>
+        <a href="mailto:your@email.com">your@email.com</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">GitHub</a>
+    </div>
 
-<script>
-function toggleSection(id) {
-    var section = document.getElementById(id);
-    if (section.style.display === "block") {
-        section.style.display = "none";
-    } else {
-        section.style.display = "block";
-    }
-}
-</script>
+</div>
 
 </body>
 </html>
